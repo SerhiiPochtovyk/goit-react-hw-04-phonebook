@@ -12,7 +12,9 @@ class ContactForm extends Component {
   };
 
   handleNumberChange = e => {
-    this.setState({ number: e.target.value });
+    const numberInput = e.target.value;
+    const cleanedNumber = numberInput.replace(/\D/g, '').slice(0, 10);
+    this.setState({ number: cleanedNumber });
   };
 
   handleSubmit = e => {

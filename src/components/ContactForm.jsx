@@ -1,35 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const ContactForm = ({
-  name,
-  number,
-  onNameChange,
-  onNumberChange,
-  onAddContact,
-}) => (
-  <Form>
-    <Input
-      type="text"
-      name="name"
-      required
-      placeholder="Name"
-      value={name}
-      onChange={onNameChange}
-    />
-    <Input
-      type="tel"
-      name="number"
-      required
-      placeholder="Phone number"
-      value={number}
-      onChange={onNumberChange}
-    />
-    <Button type="button" onClick={onAddContact}>
-      Add Contact
-    </Button>
-  </Form>
-);
+class ContactForm extends Component {
+  state = {
+    name: '',
+    number: '',
+  };
+
+  handleNameChange = e => {
+    this.setState({ name: e.target.value });
+  };
+
+  handleNumberChange = e => {
+    this.setState({ number: e.target.value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { name, number } = this.state;
+
+    if (name && number) {
+      this.props.onAddContact(name, number);
+      this.setState({ name: '', number: '' });
+    }
+  };
+
+  render() {
+    const { name, number } = this.state;
+
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <Input
+          type="text"
+          name="name"
+          required
+          placeholder="Name"
+          value={name}
+          onChange={this.handleNameChange}
+        />
+        <Input
+          type="tel"
+          name="number"
+          required
+          placeholder="Phone number"
+          value={number}
+          onChange={this.handleNumberChange}
+        />
+        <Button type="submit">Add Contact</Button>
+      </Form>
+    );
+  }
+}
 
 const Form = styled.form`
   display: flex;

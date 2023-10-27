@@ -16,6 +16,15 @@ class App extends Component {
   };
 
   addContact = (name, number) => {
+    const isNameExists = this.state.contacts.some(
+      contact => contact.name === name
+    );
+
+    if (isNameExists) {
+      alert("Це ім'я вже існує в телефонній книзі.");
+      return;
+    }
+
     const newContact = {
       id: `id-${Date.now()}`,
       name,

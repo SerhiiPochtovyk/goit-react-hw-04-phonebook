@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 class ContactForm extends Component {
   state = {
@@ -74,5 +75,9 @@ const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
 `;
+
+ContactForm.propTypes = {
+  onAddContact: PropTypes.func.isRequired,
+};
 
 export default ContactForm;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ContactList = ({ contacts, onDeleteContact }) => (
     <List>
@@ -36,5 +37,10 @@ const DeleteButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
 `;
+
+ContactList.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+};
 
 export default ContactList;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Filter = ({ filter, onFilterChange }) => (
   <Input
@@ -17,5 +18,10 @@ const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
+
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+};
 
 export default Filter;

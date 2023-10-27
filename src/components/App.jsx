@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
@@ -85,5 +86,13 @@ const Container = styled.div`
 const Title = styled.h1`
   text-align: center;
 `;
+
+App.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired,
+  addContact: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+  handleFilterChange: PropTypes.func.isRequired,
+};
 
 export default App;

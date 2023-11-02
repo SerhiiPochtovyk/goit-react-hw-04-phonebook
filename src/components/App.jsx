@@ -19,7 +19,7 @@ const App = () => {
   }, [contacts]);
 
   const addContact = (name, number) => {
-    const isNameExists = contacts.some((contact) => contact.name === name);
+    const isNameExists = contacts.some(contact => contact.name === name);
 
     if (isNameExists) {
       alert("Це ім'я вже існує в телефонній книзі.");
@@ -35,17 +35,17 @@ const App = () => {
     setContacts([...contacts, newContact]);
   };
 
-  const deleteContact = (contactId) => {
-    setContacts(contacts.filter((contact) => contact.id !== contactId));
+  const deleteContact = contactId => {
+    setContacts(contacts.filter(contact => contact.id !== contactId));
   };
 
-  const handleFilterChange = (e) => {
+  const handleFilterChange = e => {
     setFilter(e.target.value);
   };
 
   const getFilteredContacts = () => {
     const normalizedFilter = filter.toLowerCase();
-    return contacts.filter((contact) =>
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
@@ -58,7 +58,10 @@ const App = () => {
       <ContactForm onAddContact={addContact} />
       <Title>Contacts</Title>
       <Filter filter={filter} onFilterChange={handleFilterChange} />
-      <ContactList contacts={filteredContacts} onDeleteContact={deleteContact} />
+      <ContactList
+        contacts={filteredContacts}
+        onDeleteContact={deleteContact}
+      />
     </Container>
   );
 };

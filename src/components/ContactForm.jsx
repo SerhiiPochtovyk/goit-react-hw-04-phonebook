@@ -1,60 +1,53 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const ContactForm = ({ onAddContact }) => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
-class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   };
 
-  handleNameChange = e => {
-    this.setState({ name: e.target.value });
-  };
-
-  handleNumberChange = e => {
+  const handleNumberChange = (e) => {
     const numberInput = e.target.value;
     const cleanedNumber = numberInput.replace(/\D/g, '').slice(0, 10);
-    this.setState({ number: cleanedNumber });
+    setNumber(cleanedNumber);
   };
 
-  handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, number } = this.state;
 
     if (name && number) {
-      this.props.onAddContact(name, number);
-      this.setState({ name: '', number: '' });
+      onAddContact(name, number);
+      setName('');
+      setNumber('');
     }
   };
 
-  render() {
-    const { name, number } = this.state;
-
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <Input
-          type="text"
-          name="name"
-          required
-          placeholder="Name"
-          value={name}
-          onChange={this.handleNameChange}
-        />
-        <Input
-          type="tel"
-          name="number"
-          required
-          placeholder="Phone number"
-          value={number}
-          onChange={this.handleNumberChange}
-        />
-        <Button type="submit">Add Contact</Button>
-      </Form>
-    );
-  }
-}
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Input
+        type="text"
+        name="name"
+        required
+        placeholder="Name"
+        value={name}
+        onChange={handleNameChange}
+      />
+      <Input
+        type="tel"
+        name="number"
+        required
+        placeholder="Phone number"
+        value={number}
+        onChange={handleNumberChange}
+      />
+      <Button type="submit">Add Contact</Button>
+    </Form>
+  );
+};
 
 const Form = styled.form`
   display: flex;

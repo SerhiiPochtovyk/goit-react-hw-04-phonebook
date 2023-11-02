@@ -3,17 +3,15 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const ContactList = ({ contacts, onDeleteContact }) => (
-    <List>
-      {contacts.map((contact) => (
-        <Item key={contact.id}>
-          {contact.name}: {contact.number}
-          <DeleteButton onClick={() => onDeleteContact(contact.id)}>
-            Delete
-          </DeleteButton>
-        </Item>
-      ))}
-    </List>
-  );
+  <List>
+    {contacts.map((contact) => (
+      <Item key={contact.id}>
+        {contact.name}: {contact.number}
+        <DeleteButton onClick={() => onDeleteContact(contact.id)}>Delete</DeleteButton>
+      </Item>
+    ))}
+  </List>
+);
 
 const List = styled.ul`
   list-style: none;

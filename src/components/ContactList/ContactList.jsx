@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { List, Item, DeleteButton } from './ContactListStyles'; 
 
 const ContactList = ({ contacts, onDeleteContact }) => (
   <List>
@@ -12,29 +12,6 @@ const ContactList = ({ contacts, onDeleteContact }) => (
     ))}
   </List>
 );
-
-const List = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
-
-const Item = styled.li`
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const DeleteButton = styled.button`
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-`;
 
 ContactList.propTypes = {
   contacts: PropTypes.array.isRequired,

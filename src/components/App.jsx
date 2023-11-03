@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import Filter from './Filter';
+import { Container, Title } from './AppStyles'; 
+import ContactForm from './ContactForm/ContactForm';
+import ContactList from './ContactList/ContactList';
+import Filter from './Filter/Filter';
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
@@ -66,17 +66,6 @@ const App = () => {
   );
 };
 
-const Container = styled.div`
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-`;
 
-const Title = styled.h1`
-  text-align: center;
-`;
 
 export default App;

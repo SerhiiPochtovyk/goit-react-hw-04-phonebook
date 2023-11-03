@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Input } from './FilterStyles'; 
 
 const Filter = ({ filter, onFilterChange }) => (
   <Input
@@ -11,13 +11,6 @@ const Filter = ({ filter, onFilterChange }) => (
     onChange={onFilterChange}
   />
 );
-
-const Input = styled.input`
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-`;
 
 Filter.propTypes = {
   filter: PropTypes.string.isRequired,
